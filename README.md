@@ -1,1 +1,1 @@
-# encyclop-die_elden_ring
+# encyclopedie_elden_ring
