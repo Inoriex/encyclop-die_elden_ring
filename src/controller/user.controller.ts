@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import { createUser, arrayUser, inserInBdd } from "../services/user.service";
+import { createUser, arrayUser, inserInBdd, listeUser } from "../services/user.service";
 import { createRandomUser } from "../services/user.service";
 import { CreateUserInput } from "../validate/user.validate";
 
@@ -25,6 +25,18 @@ export async function randomUser(req: Request, res: Response) {
       users: users,
     });
   } catch (error: any) {
+    res.status(400).send(error);
+  }
+}
+
+export async function allUser(req: Request, res: Response) {
+  try {
+    const liste = await listeUser();
+    res.status(200).send({
+      message: "je suis pas venue ici pour soufrir OK !",
+      liste: liste,
+    })
+  }catch (error: any) {
     res.status(400).send(error);
   }
 }
